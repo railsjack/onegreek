@@ -1,0 +1,55 @@
+<ion-header-bar class="bar bar-header bar-dark">
+    <button class="button button-icon icon" ng-click="cancelPost()">
+        <i class="ion-ios-arrow-back"></i> Back
+    </button>
+    <div class="h1 title">one<strong>GREEK</strong></div>
+</ion-header-bar>
+<ui-view>
+    <ion-content class="onegreek-light og-newsfeed">
+        <div ng-if="isLoading" valign-element="" class="loading">
+            <ion-spinner></ion-spinner>
+            <br/>
+            Posting...
+        </div>
+        <div ng-if="!isLoading">
+            <div class="list card">
+                <div class="og-newsfeed-post og-newsfeed-form {{ currentUser.gender | lowercase }}">
+                    <div class="text">
+                        <div class="quote left"></div>
+                        <div class="content">
+                            <textarea style="width:100%;" ng-model="draftPost.text" class="textarea" autofocus placeholder="Type your post here..." maxlength="420"></textarea>
+                        </div>
+                        <div class="quote right"></div>
+                    </div>
+                    <div class="photo">
+                        <a ng-if="draftPost.photos.length == 0" ng-click="togglePhoto()"><h1 style="margin:0;padding:0;line-height:1em;"><i class="ion-camera"></i></h1></a>
+                        <div ng-repeat="photo in draftPost.photos">
+                            <img ng-src="data:image/jpeg;base64,{{ photo.data }}"/>
+                        </div>
+                        <div ng-if="draftPost.photos.length > 0">
+                            <a class="button button-assertive button-small" ng-click="removePhoto()"><i class="ion-ios-close-empty"></i> Remove Photo</a>
+                        </div>
+                    </div>
+
+                    <div class="share">
+                        <div style="padding-bottom: 5px;">
+                            <span class="pull-left">Share to:</span>
+                            <span class="pull-right char-count"> {{ draftPost.text.length }}/420 Characters</span>
+                            &nbsp;
+                        </div>
+                        <div class="clear"></div>
+                        <div style="clear:both;"></div>
+                        <ion-toggle ng-model="draftPost.share_to_facebook">Facebook</ion-toggle>
+                        <ion-toggle ng-model="draftPost.share_to_instagram">Instagram</ion-toggle>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/>
+        <br/>
+    </ion-content>
+</ui-view>
+<ion-tabs class="tabs-dark" keyboard-attach>
+    <ion-tab ng-click="submitPost()" icon="ion-android-send"></ion-tab>
+</ion-tabs>

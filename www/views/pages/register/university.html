@@ -1,0 +1,13 @@
+<ion-view view-title="Select University">
+    <ion-content class="onegreek-dark register">
+        <ion-list>
+            <label class="item item-input">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search Universities..." ng-model="filters.university_name" ng-keypress="updateUniversities()">
+            </label>
+            <ion-item  ng-repeat="u in universities" ng-click="selectUniversity(u)">
+                {{ u.name }}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

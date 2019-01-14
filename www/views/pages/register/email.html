@@ -1,0 +1,16 @@
+<ion-view view-title="University Email">
+        <ion-content  class="onegreek-dark register">
+            <div class="list list-inset list-dark list-transparent">
+                <label class="item item-input">
+                    <input type="email" ng-model="user.university_email" placeholder="Your .edu email address" class="email">
+                </label>
+                <br/>
+                <div ng-if="user.university_email">
+                    <p>RECOGNIZED</p>
+                    <br/>
+                    <select disabled="{{ universityDisabled }}" ng-options="university.id as university.name for university in universities track by university.id" ng-model="user.university_id"></select>
+                </div>
+            </div>
+        </ion-content>
+    </div>
+</ion-view>

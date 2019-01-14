@@ -1,0 +1,76 @@
+<div class="list card">
+    <div class="og-newsfeed-post {{ post.user.gender | lowercase }}">
+        <div class="text">
+            <div class="quote left"></div>
+            <div class="content">
+                <p ng-bind-html="post.text + '&nbsp;' | hashtagParser"></p>
+            </div>
+            <div class="quote right"></div>
+        </div>
+
+        <div ng-repeat="photo in post.photos" class="photo">
+            <img ng-src="{{ photo.url }}"/>
+        </div>
+
+        <div ng-if="!post.my_vote && currentUser.id != post.user_id">
+            <div class="action-bar">
+                <div class="action comment-action"></div>
+                <div class="action like-action">
+                    <div class="container">
+                        <a ng-click="upvote()" class="bowtie inactive"></a>
+                    </div>
+                </div>
+                <div class="action author"></div>
+            </div>
+        </div>
+
+        <div ng-if="post.my_vote || currentUser.id == post.user_id">
+            <div class="action-bar">
+                <div class="action comment-action">
+                    <div class="container">
+                        <a ng-if="!post.showComments && post.comment_count < 1" ng-click="toggleComments()" class="compose-comment" ><i class="icon ion-plus"></i></a>
+                        <a ng-if="post.comment_count > 0 || post.showComments" ng-click="toggleComments()" ng-class="{active: (post.showComments)}"><strong>{{ post.comment_count }}</strong> COMMENTS</a>
+                    </div>
+                </div>
+                <div class="action like-action">
+                    <div class="container">
+                        <span class="count male">{{ post.male_votes_sum }}</span>
+                        <span class="bowtie active"></span>
+                        <span class="count female">{{ post.female_votes_sum }}</span>
+                    </div>
+                </div>
+                <div class="action author">
+                    <div class="container" ng-bind-html="post | authorByline"></div>
+                </div>
+            </div>
+
+            <div class="comments" ng-if="post.showComments">
+                <div ng-if="!draftComment" class="compose-comment-cta">
+                    <a class="compose-comment" ng-click="composeComment(post)"><i class="icon ion-plus"></i></a>
+                </div>
+
+                <div ng-if="draftComment && draftComment.post.id == post.id" class="comment {{ currentUser.gender | lowercase }}">
+                    <div class="container">
+                        <div class="text">
+                            <textarea ng-model="draftComment.text" placeholder="Add your comment..." maxlength="420" autofocus="true"></textarea>
+                        </div>
+                        <div class="author" ng-bind-html="currentUser | authorByline"></div>
+                    </div>
+                </div>
+
+                <div ng-repeat="comment in post.comments" class="comment {{ comment.gender | lowercase}}">
+                    <div class="container">
+                        <div class="text">
+                            <p>{{ comment.text }}</p>
+                        </div>
+                        <div class="author" ng-bind-html="comment | authorByline"></div>
+                    </div>
+                </div>
+
+                <div ng-if="post.comments.length < post.comment_count">
+                    <a onclick="loadMoreComments(post)">Load More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

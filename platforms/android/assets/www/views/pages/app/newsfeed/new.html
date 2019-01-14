@@ -1,0 +1,31 @@
+<ui-view>
+    <ion-content class="onegreek-light og-newsfeed">
+        <div class="list card">
+            <div class="og-newsfeed-post {{ currentUser.gender | lowercase }}">
+                <div class="text">
+                    <div class="quote left"></div>
+                    <div class="content">
+                        <textarea class="textarea" og-focus-on-load="true" placeholder="Type your post here..."></textarea>
+                    </div>
+                    <div class="quote right"></div>
+                </div>
+
+                <div class="photo">
+                    <button ng-click="takePhoto()">Take Photo</button>
+                    <button ng-click="choosePhoto()">Choose Existing Photo</button>
+                </div>
+
+                <div class="cta">
+                    <button class="button button-block">POST</button>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <br/>
+    </ion-content>
+</ui-view>
+<ion-tabs class="tabs-dark ">
+    <ion-tab on-click="window.history.back()" title="CANCEL"></ion-tab>
+    <ion-tab ng-click="submitPost()" icon="ion-android-send"></ion-tab>
+    <ion-tab></ion-tab>
+</ion-tabs>

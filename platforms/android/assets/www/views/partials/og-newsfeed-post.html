@@ -1,0 +1,80 @@
+<div class="list card">
+    <div class="og-newsfeed-post {{ post.user.gender | lowercase }}">
+        <div class="text">
+            <div class="quote left"></div>
+            <div class="content">
+                <p ng-bind-html="post.text | hashtagParser"></p>
+            </div>
+            <div class="quote right"></div>
+        </div>
+
+        <div ng-repeat="photo in post.photos" class="photo">
+            <img ng-src="{{ photo.url }}"/>
+        </div>
+
+        <div ng-if="!post.my_vote">
+            <div class="action-bar">
+                <div class="action comment-action"></div>
+                <div class="action like-action">
+                    <div class="container">
+                        <a class="upvote" ng-click="upvote()">
+                            <i class="ion-arrow-up-a"></i>
+                        </a>
+                        <span class="bowtie inactive"></span>
+                        <a class="downvote" ng-click="downvote()">
+                            <i class="ion-arrow-down-a"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="action author"></div>
+            </div>
+        </div>
+
+        <div ng-if="post.my_vote">
+            <div class="action-bar">
+                <div class="action comment-action">
+                    <div class="container">
+                        <a ng-click="toggleComments()" ng-class="{active: (showComments)}"><strong>{{ post.comment_count }}</strong> COMMENTS</a>
+                    </div>
+                </div>
+                <div class="action like-action">
+                    <div class="container">
+                        <span class="count male">{{ post.male_vote_count }}</span>
+                        <span class="bowtie active"></span>
+                        <span class="count female">{{ post.female_vote_count }}</span>
+                    </div>
+                </div>
+                <div class="action author">
+                    <div class="container">
+                        <span class="name">{{ post.user.first_name }} {{ post.user.organization.symbol }}</span>
+                        <span class="university">{{ post.user.university.name }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="comments" ng-if="showComments">
+                <div class="comment">
+                    <div class="text">
+                        <textarea placeholder="Add your comment..."></textarea>
+                    </div>
+                    <div class="author">
+                        <span class="name">{{ currentUser.first_name }} {{ currentUser.organization.symbol }}</span>
+                        <span class="university">{{ currentUser.university.name }}</span>
+                    </div>
+                </div>
+
+                <div class="comment">
+                    <div class="text">
+                        <p>Lorem ipsum dolor.</p>
+                    </div>
+                    <div class="author">
+                        <span class="name">STEVE AKP</span>
+                        <span class="university">Ohio State University</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

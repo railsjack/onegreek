@@ -1,0 +1,12 @@
+<ion-view view-title="Enter Your Phone Number">
+        <ion-content  class="onegreek-dark register">
+            <div ng-if="!isLoading && !isSubmitted" class="list list-inset list-dark list-transparent">
+                <label class="item item-input">
+                    <input type="tel" ng-model="user.phone" placeholder="555-555-5555">
+                </label>
+                <br/>
+                <button ng-click="submitRegistration()" class="button button-block button-positive">Submit</button>
+            </div>
+        </ion-content>
+    </div>
+</ion-view>

@@ -1,0 +1,294 @@
+.og-newsfeed {
+    .loading,
+    .blank{
+        text-align:center;
+    }
+    .card {
+        margin-bottom:0 !important;
+    }
+    .og-newsfeed-post {
+        &.female {
+            .quote {
+                &.left {
+                    background-image: url("../images/newsfeed/quotes/sorority-left.png");
+                }
+                &.right {
+                    background-image:url("../images/newsfeed/quotes/sorority-right.png");
+                }
+            }
+            .hashtag {
+                color: $sorority-color;
+            }
+            .like-action {
+                a {
+                    color: $sorority-color;
+                }
+            }
+            .comment-action {
+                a {
+                    color: $sorority-color;
+                }
+            }
+            .author {
+                .name {
+                    color: $sorority-color
+                }
+            }
+        }
+        &.male {
+            .quote {
+                &.left {
+                    background-image: url("../images/newsfeed/quotes/fraternity-left.png");
+                }
+                &.right {
+                    background-image:url("../images/newsfeed/quotes/fraternity-right.png");
+                }
+            }
+            .hashtag {
+                color: $fraternity-color;
+            }
+            .like-action {
+                a {
+                    color: $fraternity-color;
+                }
+            }
+            .comment-action {
+                a {
+                    color: $fraternity-color;
+                }
+            }
+            .author {
+                .name {
+                    color: $fraternity-color;
+                }
+            }
+        }
+        .text {
+            width: 100%;
+            display: table;
+            padding-top:15px;
+            .quote {
+                width:50px;
+                display: table-cell;
+                background-size: 22px;
+                background-position-x: 50%;
+                background-position-y: 2px;
+                background-repeat: no-repeat;
+            }
+            .content {
+                display:table-cell;
+                width: auto;
+                padding: 0 5px 0 0;
+                text-align: center;
+                p {
+                    font-size: 16px;
+                    padding:0;
+                    margin: 0;
+                    color: #333;
+                }
+            }
+        }
+        .photo {
+            padding: 5px 15px 0 15px;
+            text-align:center;
+            img {
+                width:100%;
+            }
+        }
+        .compose-comment {
+            display:inline-block;
+            background: $positive;
+            color: #FFF !important;
+            padding: 3px 5px;
+            border-radius: 3px;
+            line-height: 1em;
+            font-size: 12px;
+        }
+        .compose-comment-cta {
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 1px solid #EEE;
+        }
+        .action-bar {
+            display: table;
+            width:100%;
+            padding: 5px 0 0;
+            font-size: 12px;
+            .action {
+                display: table-cell;
+            }
+            .comment-action {
+                width: 35%;
+                .container {
+                    padding-left: 15px;
+                    a.active {
+                        background: #F7F7F7;
+                        display:inline-block;
+                        border-top:1px solid #EEEEEE;
+                        border-right:1px solid #EEEEEE;
+                        border-left:1px solid #EEEEEE;
+                        border-top-right-radius: 2px;
+                        border-top-left-radius: 2px;
+                        margin: -1px 0 -1px -4px;
+                        padding: 2px 4px 12px 4px;
+                    }
+                }
+            }
+            .like-action {
+                width: 30%;
+                text-align:center;
+                .container {
+                    display: table;
+                    width: 100%;
+                    a {
+                        display: table-cell;
+                        width:25%;
+                        padding:5px 0;
+                        margin:0;
+                        font-size:20px;
+                    }
+                    .count {
+                        display: table-cell;
+                        width:25%;
+                        padding:10px 0;
+                        margin:0;
+                        font-weight: bold;
+                        text-align: center;
+                        &.male {
+                            color: $fraternity-color;
+                        }
+                        &.female {
+                            color: $sorority-color;
+                        }
+                    }
+                    .bowtie {
+                        display: table-cell;
+                        background-position: 50% 50%;
+                        background-size: 36px;
+                        height:30px;
+                        margin-bottom:5px;
+                        background-repeat: no-repeat;
+                        &.active {
+                            background-image: url("../images/newsfeed/bowtie-active.png");
+                        }
+                        &.inactive {
+                            background-image: url("../images/newsfeed/bowtie-inactive.png");
+                        }
+                    }
+                }
+
+            }
+            .author {
+                width: 35%;
+                span {
+                    overflow: hidden;
+                    padding-right: 15px;
+                    display:block;
+                    text-align: right;
+                    line-height: 1.2em;
+                    &.name {
+                        text-transform: uppercase;
+                        font-weight: bold;
+                    }
+                    &.university {
+                        font-size: 9px;
+                        color:#999;
+                    }
+                }
+            }
+        }
+        .comments {
+            border-top: 1px solid #EEEEEE;
+            background: #F7F7F7;
+            padding: 0 15px 5px;
+            .comment {
+                border-bottom: 1px solid #eeeeee;
+                padding: 5px 0;
+                width: 100%;
+                .container {
+                    width:100%;
+                    display: table;
+                    vertical-align: top;
+                }
+                &.male {
+                    .name {
+                        color: $fraternity-color;
+                    }
+                }
+                &.female {
+                    .name {
+                        color: $sorority-color;
+                    }
+                }
+                .text {
+                    display: table-cell;
+                    width: 65%;
+                    textarea {
+                        width: 100%;
+                    }
+                }
+                .author {
+                    display: table-cell;
+                    width: 35%;
+                    font-size: 10px;
+                    span {
+                        overflow: hidden;
+                        display:block;
+                        text-align: right;
+                        line-height: 1.2em;
+                        &.name {
+                            text-transform: uppercase;
+                            font-weight: bold;
+                            font-size:10px;
+                        }
+                        &.university {
+                            font-size: 7px;
+                            color:#999;
+                        }
+                    }
+                }
+            }
+        }
+        .cta {
+            padding: 5px 15px;
+            text-align:center;
+        }
+
+    }
+    .og-newsfeed-form {
+        a.camera {
+            color: #999;
+            display:block;
+            padding: 10px 0;
+            font-size:50px;
+        }
+        .share {
+            padding: 5px 15px;
+            color:#999;
+            font-size:12px;
+        }
+        .networks {
+            border-top: 1px solid #CCC;
+        }
+        .social-network {
+            width:50%;
+            text-align:center;
+            &:first-child {
+                border-right:1px solid #CCC;
+            }
+            a {
+                display:block;
+                color:#CCC;
+                font-weight: bold;
+                font-size:16px;
+                padding: 12px 0;
+                &.active {
+                    color: $fraternity-color;
+                }
+            }
+        }
+        .char-count {
+            color: #999;
+        }
+    }
+}

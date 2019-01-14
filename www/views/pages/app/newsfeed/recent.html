@@ -1,0 +1,48 @@
+<ion-header-bar class="bar bar-header bar-dark">
+    <button class="button button-icon icon" ui-sref="app.roster">
+        <i class="ion-navicon-round"></i>
+    </button>
+    <div class="h1 title">
+        <img height="12" src="/images/og-logo.png"/>
+    </div>
+    <button class="button button-icon icon" ui-sref="app.settings">
+        <i class="ion-gear-b"></i>
+    </button>
+</ion-header-bar>
+<ui-view>
+    <ion-content class="onegreek-light og-newsfeed">
+        <div ng-if="!isLoading && posts && posts.length === 0" class="blank" valign-element>
+            <h1><i class="ion-ios-paper"></i></h1>
+            <p>No Posts Yet</p>
+            <button ui-sref="app.newsfeed.compose" class="button button-positive">Be the First <i class="ion-compose"></i></button>
+        </div>
+
+        <div ng-repeat="post in posts">
+            <og-newsfeed-post post="post" draft-comment="draftComment"></og-newsfeed-post>
+        </div>
+
+        <div ng-if="isLoading" class="loading" valign-element>
+            <ion-spinner></ion-spinner>
+        </div>
+
+        <br/>
+        <br/>
+    </ion-content>
+</ui-view>
+<ion-tabs class="tabs-dark">
+    <div ng-if="draftComment">
+        <div ng-if="commentIsPosting">
+            <ion-spinner style="margin-top:8px;display:inline-block" class="spinner-light"></ion-spinner>
+        </div>
+        <div ng-if="!commentIsPosting">
+            <ion-tab ng-click="cancelComment()" title="CANCEL"></ion-tab>
+            <ion-tab ng-click="postComment()" icon="ion-android-send"></ion-tab>
+            <ion-tab ></ion-tab>
+        </div>
+    </div>
+    <div ng-if="!draftComment">
+        <ion-tab ui-sref="app.newsfeed.recent" title="NEW"></ion-tab>
+        <ion-tab ui-sref="app.newsfeed.compose" icon="ion-plus-circled"></ion-tab>
+        <ion-tab ui-sref="app.newsfeed.trending" title="TRENDING"></ion-tab>
+    </div>
+</ion-tabs>

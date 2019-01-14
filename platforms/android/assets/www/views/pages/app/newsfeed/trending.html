@@ -1,0 +1,23 @@
+<ui-view>
+    <ion-content class="onegreek-light og-newsfeed">
+
+        <div ng-if="!posts" style="padding:50px;text-align:center;">
+            <ion-spinner></ion-spinner>
+        </div>
+        <div ng-if="posts && posts.length === 0" style="padding:50px;text-align:center;">
+            <p>No Posts Yet</p>
+        </div>
+
+        <div ng-repeat="post in posts">
+            <og-newsfeed-post post="post"></og-newsfeed-post>
+        </div>
+
+        <br/>
+        <br/>
+    </ion-content>
+</ui-view>
+<ion-tabs class="tabs-dark ">
+    <ion-tab ui-sref="app.newsfeed.recent" title="NEW"></ion-tab>
+    <ion-tab ui-sref="app.newsfeed.compose" icon="ion-plus-circled"></ion-tab>
+    <ion-tab ui-sref="app.newsfeed.trending" title="TRENDING"></ion-tab>
+</ion-tabs>

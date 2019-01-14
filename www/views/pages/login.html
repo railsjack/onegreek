@@ -1,0 +1,16 @@
+<ion-view>
+    <ion-content class="onegreek-dark">
+        <div id="login" valign-element class="login">
+            <div class="og-logo"></div>
+            <h1>THE PREMIERE EXCLUSIVE GREEK NETWORK</h1>
+            <div ng-if="error" style="margin:10px;" class="error">
+                {{ error }}
+            </div>
+            <button ng-click="initiateLogin()" class="button button-large icon-left ion-social-facebook button-positive">
+                &nbsp;
+                <span ng-if="!isWorking">Login With Facebook</span>
+                <span ng-if="isWorking">Loading...</span>
+            </button>
+        </div>
+    </ion-content>
+</ion-view>

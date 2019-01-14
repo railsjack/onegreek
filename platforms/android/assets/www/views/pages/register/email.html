@@ -1,0 +1,23 @@
+<ion-view view-title="Verify .EDU Email">
+        <ion-content  class="onegreek-dark register">
+            <div ng-if="!isLoading && !isSubmitted" class="list list-inset list-dark list-transparent">
+                <label class="item item-input">
+                    <input type="email" ng-model="user.university_email" placeholder="Your .edu email address" class="email">
+                </label>
+                <br/>
+                <button ng-click="submitRegistration()" class="button button-block button-positive">Submit</button>
+            </div>
+            <div ng-if="isLoading" class="center" style="padding:100px 0;">
+                <ion-spinner class="spinner-light"></ion-spinner>
+            </div>
+            <div ng-if="isSubmitted" class="padding" style="text-align:center;">
+                <h1 style="color:#FFF"><i class="ion-ios-checkmark-outline"></i></h1>
+                <p style="color:#FFF">Please check your email for a verification link.</p>
+                <button ui-sref="app.newsfeed" class="button button-block button-positive">Continue</button>
+            </div>
+
+
+        </ion-content>
+    </div>
+
+</ion-view>
